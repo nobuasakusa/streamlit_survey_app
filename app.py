@@ -11,7 +11,7 @@ user_input = st.text_area("ここにテキストを入力してください", ""
 # ワードクラウドを生成する関数
 def generate_wordcloud(text):
     wordcloud = WordCloud(
-        font_path='./NotoSansJP-Regular.otf',  # Google Fontsの日本語フォントのパス
+        font_path='./NotoSansJP-Regular.ttf',  # Google Fontsの日本語フォントのパス
         width=800,
         height=800,
         background_color='white',
