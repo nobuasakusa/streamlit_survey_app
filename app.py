@@ -58,4 +58,4 @@ st.write(result_df)
 st.bar_chart(result_df.set_index("達成度")["割合"])
 
 # フッター
-st.footer("最大回答数: 20人まで")
+st.write("最大回答数: 20人まで")
