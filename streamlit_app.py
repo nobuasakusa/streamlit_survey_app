@@ -6,8 +6,7 @@ import seaborn as sns
 # アプリのタイトルを設定
 st.title("アンケート結果リアルタイム集計アプリ")
 
-# データを格納するデータフレームを作成 (最大20行)
-max_responses = 20
+# データを格納するデータフレームを作成
 data = pd.DataFrame(columns=["名前", "達成度"])
 
 # 質問と選択肢を表示
@@ -23,16 +22,8 @@ achievement = st.selectbox("達成度を選択してください:", ["1", "2", "
 # 登録ボタンをクリックしたときの処理
 if st.button("登録"):
     if name and achievement:
-        if len(data) < max_responses:
-            data = data.append({"名前": name, "達成度": int(achievement)}, ignore_index=True)
-            st.success("データが正常に登録されました。")
-        else:
-            st.error("最大回答数に達しました。データを追加できません。")
-
-# リセットボタンを追加してデータをクリア
-if st.button("リセット"):
-    data = pd.DataFrame(columns=["名前", "達成度"])
-    st.success("データがリセットされました。")
+        data = data.append({"名前": name, "達成度": int(achievement)}, ignore_index=True)
+        st.success("データが正常に登録されました。")
 
 # 集計結果を表示
 st.header("集計結果")
@@ -58,4 +49,4 @@ st.write(result_df)
 st.bar_chart(result_df.set_index("達成度")["割合"])
 
 # フッター
-st.write("最大回答数: 20人まで")
+st.write("以上")
